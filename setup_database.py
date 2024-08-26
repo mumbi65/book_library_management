@@ -6,7 +6,7 @@ def create_database():
         user = "root",
         password = "Donapple@65"
     )
-
+ 
     cursor = mydb.cursor()
 
     cursor.execute("CREATE DATABASE IF NOT EXISTS library_db")

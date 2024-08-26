@@ -29,9 +29,9 @@ class Library:
         values = (book.title, book.author, book.rating, book.is_borrowed)
         self.cursor.execute(query, values)
         self.mydb.commit()
-        print("Book added successfully.")
+        print("Book added successfully.") 
 
-    def view_books(self, sort_by = 'title', limit = None):
+    def view_books(self, sort_by = 'ID', limit = None):
         query = f"SELECT * FROM books ORDER BY {sort_by}"
         if limit:
             query += f"LIMIT {limit}"
@@ -81,7 +81,7 @@ class Library:
         query = "DELETE FROM books WHERE id = %s"
         self.cursor.execute(query, (book_id,))
         self.mydb.commit()
-        print("Book deleted successfully.")
+        print("Book deleted successfully.") 
 
     def register_user(self, username, password, role='user'):
         query = "INSERT INTO users(username, password, role) VALUES (%s, %s, %s)"
@@ -107,5 +107,5 @@ class Library:
     def __enter__(self):
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self):
         self.close_connection()
